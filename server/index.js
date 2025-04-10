@@ -1,56 +1,6 @@
 
 
-// const express = require("express");
-// const mongoose = require("mongoose");
-// const dotenv = require("dotenv").config();
-// const cors = require("cors");
-// const app = express();
 
-// // Routes
-// const authRoutes = require("./routes/auth");
-
-// // Middleware
-// app.use(cors({
-//     origin: "http://localhost:3000",
-//     methods: ["GET", "POST"],
-//     allowedHeaders: ["Content-Type"],
-//     credentials: true
-// }));
-// app.use(express.json({ limit: "10mb" }));
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.static("public"));
-
-// // Route Middleware
-// app.use("/auth", authRoutes);
-
-// // Database & Server Configuration
-// const PORT = 3001;
-// const MONGO_URI = process.env.MONGO_URL || "mongodb://localhost:27017/community-volunteering";
-
-// mongoose.connection.on("error", err => {
-//     console.error("MongoDB connection error:", err);
-// });
-
-// mongoose.connection.on("connected", () => {
-//     console.log("Connected to MongoDB");
-// });
-
-// mongoose.connect(MONGO_URI, {
-//     dbName: "community-volunteering",
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     serverSelectionTimeoutMS: 5000
-// })
-// .then(() => {
-//     app.listen(PORT, () => {
-//         console.log(`Server running on port ${PORT}`);
-//         console.log(`MongoDB connected: ${mongoose.connection.host}`);
-//     });
-// })
-// .catch(err => {
-//     console.error("Database connection failed:", err);
-//     process.exit(1);
-// });
 
 
 const express = require("express");
@@ -58,15 +8,18 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
 const app = express();
+const path = require("path");
+
 
 // Routes
 const authRoutes = require("./routes/auth");
+const listingRoutes = require("./routes/listing.js");
 
 // Middleware
 app.use(cors({
     origin: "http://localhost:3000", // Frontend URL
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type","Authorization" ],
     credentials: true
 }));
 app.use(express.json({ limit: "10mb" })); // JSON body parsing with size limit
@@ -75,6 +28,18 @@ app.use(express.static("public")); // Serve static files (e.g., uploads)
 
 // Route Middleware
 app.use("/auth", authRoutes);
+app.use("/properties", listingRoutes);
+
+// Add this at the end of your routes in index.js
+app.use((err, req, res, next) => {
+    console.error("Unhandled Error:", err); // Log the error
+    res.status(500).json({ error: "Internal Server Error" });
+  });
+  
+
+
+
+app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
 
 // Database & Server Configuration
 const PORT = 3001; // Port for backend server
@@ -109,3 +74,4 @@ mongoose.connect(MONGO_URI, {
     console.error("Database connection failed:", err);
     process.exit(1); // Exit the process on failure
 });
+//END OF FIRST TRY

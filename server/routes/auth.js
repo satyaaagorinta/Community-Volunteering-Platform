@@ -272,7 +272,7 @@ router.post("/login", async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: "User doesn't exist!" }); // Changed status code to 404 for better semantics
         }
-
+         
         // Compare passwords
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
@@ -291,7 +291,7 @@ router.post("/login", async (req, res) => {
         const token = jwt.sign(
             { id: user._id },
             process.env.JWT_SECRET,
-            { expiresIn: "1h" } // Token expires in 1 hour
+            { expiresIn: "10h" } // Token expires in 1 hour
         );
 
         res.status(200).json({
@@ -307,6 +307,27 @@ router.post("/login", async (req, res) => {
                 : err.message,
         });
     }
+     // In your auth.js routes file
+router.post("/refresh-token", async (req, res) => {
+    try {
+      const { refreshToken } = req.body;
+      
+      // Verify the refresh token
+      const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+      
+      // Generate new access token
+      const newAccessToken = jwt.sign(
+        { userId: decoded.userId },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" } // Set appropriate expiration
+      );
+      
+      res.status(200).json({ token: newAccessToken });
+    } catch (err) {
+      res.status(401).json({ error: "Invalid refresh token" });
+    }
+  });
+  
 });
 
 module.exports = router;
