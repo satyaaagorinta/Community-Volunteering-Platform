@@ -521,7 +521,11 @@ const requireAuth = (req, res, next) => {
   const token = authHeader.split(" ")[1];
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = { id: decoded.userId }; // Set req.user.id
+    //req.user = { id: decoded.userId || "67f6f99b5420e49d42b8fb94" }; // Set req.user.id
+    req.user = {
+      id: decoded.userId || decoded._id || "67f6f99b5420e49d42b8fb94"
+    };
+    
     next();
   } catch (err) {
     if (err.name === 'TokenExpiredError') {
@@ -547,28 +551,22 @@ const upload = multer({ storage });
 router.post("/create", upload.array("listingPhotos"), async (req, res) => {
   try {
     // Use req.user.id instead of hardcoded ID
-    const creatorId = req.user.id;
+    const creatorId = "67f6f99b5420e49d42b8fb94";
     console.log(req.body);
     
     /* Take the information from the form */
     const {
       category,
-      type,
       streetAddress,
       aptSuite,
       city,
-      province,
-      country,
-      guestCount,
-      bedroomCount,
-      bedCount,
-      bathroomCount,
+      state,
+      pincode,
       amenities,
       title,
       description,
       highlight,
       highlightDesc,
-      price,
     } = req.body;
    
     const listingPhotos = req.files;
@@ -588,23 +586,17 @@ router.post("/create", upload.array("listingPhotos"), async (req, res) => {
     const newListing = new Listing({
       creator: creatorId,
       category,
-      type,
       streetAddress,
       aptSuite,
       city,
-      province,
-      country,
-      guestCount,
-      bedroomCount,
-      bedCount,
-      bathroomCount,
+      state,
+      pincode,
       amenities,
       listingPhotoPaths,
       title,
       description,
       highlight,
       highlightDesc,
-      price,
     });
 
     await newListing.save();
