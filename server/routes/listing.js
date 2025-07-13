@@ -523,7 +523,7 @@ const requireAuth = (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     //req.user = { id: decoded.userId || "67f6f99b5420e49d42b8fb94" }; // Set req.user.id
     req.user = {
-      id: decoded.userId || decoded._id || "67f6f99b5420e49d42b8fb94"
+      id: decoded.userId || decoded._id || "67f6dff5f55ee6419bd35f77"
     };
     
     next();
@@ -551,9 +551,9 @@ const upload = multer({ storage });
 router.post("/create", upload.array("listingPhotos"), async (req, res) => {
   try {
     // Use req.user.id instead of hardcoded ID
-    const creatorId = "67f6f99b5420e49d42b8fb94";
-    console.log(req.body);
-    
+    const creatorId = "67f6dff5f55ee6419bd35f77";// TODO:FIX THIS - SHOULD FETCH OBJECTID DYNAMICALLY  
+    console.log( "response of request body" ,req.body);
+    /*_ibject_id
     /* Take the information from the form */
     const {
       category,
@@ -666,4 +666,4 @@ router.get("/:listingId", async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = router

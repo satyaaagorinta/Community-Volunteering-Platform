@@ -14,7 +14,8 @@ const path = require("path");
 // Routes
 const authRoutes = require("./routes/auth");
 const listingRoutes = require("./routes/listing.js");
-
+const BookingRoutes = require("./routes/booking.js");
+const userRoutes = require("./routes/user.js");
 // Middleware
 app.use(cors({
     origin: "http://localhost:3000", // Frontend URL
@@ -29,6 +30,9 @@ app.use(express.static("public")); // Serve static files (e.g., uploads)
 // Route Middleware
 app.use("/auth", authRoutes);
 app.use("/properties", listingRoutes);
+app.use("/bookings",BookingRoutes);
+app.use("/users",userRoutes);
+
 
 // Add this at the end of your routes in index.js
 app.use((err, req, res, next) => {
