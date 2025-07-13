@@ -1,0 +1,149 @@
+@import "./variables.scss";
+@import "./breakpoints.scss";
+
+.navbar {
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background-color: #1a1a1a;
+  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.25), -3px -3px 6px 0px
+  rgba(0, 0, 0, 0);
+
+  @include sm {
+    padding: 10px 20px;
+  }
+.navbar_search{
+  background-color: rgb(247, 248, 248);
+  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.25), -3px -3px 6px 0px
+               rgba(0, 0, 0, 0);
+             
+  
+
+}
+.navbar_search &:hover {
+  @include shadow;
+}
+.SearchBg{
+  background-color: rgb(247, 248, 248);
+
+}
+  img {
+    width: 100px;
+    cursor: pointer;
+  }
+  // .logo{
+  //   height: 2px;
+  //   width: 2px;
+  // }
+
+  &_search {
+    
+    border-radius: 30px;
+    height: 40px;
+    // width: 300px;
+    padding: 10px 20px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+
+    input {
+      border: none;
+      outline: none;
+    }
+
+    // &:hover {
+    //   @include shadow;
+    // }
+
+    @include lg {
+      display: none;
+    }
+  }
+
+  &_right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .host {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 900;
+      font-family: "Calibri";
+      cursor: pointer;
+
+      &:hover {
+        // color: #c7c5c5;
+        text-decoration: underline;
+        // transition-duration: 1s;
+      }
+
+      @include sm {
+        display: none;
+      }
+    }
+
+    &_account {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      color: #4a4a4a;
+      border: 1px solid ;
+      border-radius: 30px;
+      display: flex;
+      gap: 10px;
+      background-color: white;
+      cursor: pointer;
+
+      &:hover {
+        @include shadow;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &_accountmenu {
+      position: absolute;
+      background-color:#1a1a1a;
+     
+      right: 60px;
+      top: 80px;
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+      padding: 10px 0;
+      border: 1px solid $lightgrey;
+      border-radius: 20px;
+      @include shadow;
+      z-index: 9999;
+
+      @include sm {
+        right: 20px;
+      }
+
+      a {
+        width: 100%;
+        padding: 8px 15px;
+        text-decoration: none;
+        color: #ffffff;
+        font-family: "Calibri";
+        font-weight: 400;
+
+        &:hover {
+          // color: #c7c5c5;
+          text-decoration: underline;
+          
+        }
+      }
+    }
+  }
+
+
+  
+}

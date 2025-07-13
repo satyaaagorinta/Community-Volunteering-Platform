@@ -1,0 +1,125 @@
+@import "./variables.scss";
+@import "./breakpoints.scss";
+
+.masked-text {
+  font-size: 7rem;
+  font-weight: bold;
+  color: transparent;
+  background-image: url("https://images.unsplash.com/photo-1732535725600-f805d8b33c9c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  // background-video:url("/assets/Slider.mp4")
+  // background-image: url('client\public\assets\animal.jpg');
+  // background-image: url('https://img.freepik.com/free-photo/indian-republic-day-celebration-digital-art-with-flag_23-2151070707.jpg?t=st=1744492523~exp=1744496123~hmac=176c756b15ecafc9caf29145c2593ec45b832ce79eeb4c61b9a0faae4420a46a&w=1380');
+  background-size: 200%; /* Enlarged for smooth animation */
+  background-position: 0 50%;
+  background-clip: text;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-background 5s infinite alternate linear;
+}
+
+@keyframes animate-background {
+  0% {
+    background-position: 0 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.categories {
+  padding: 50px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #1a1a1a;
+  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.25),
+    -3px -3px 6px 0px rgba(0, 0, 0, 0);
+
+  @include sm {
+    padding: 50px 20px;
+  }
+
+  h1 {
+    color: #ffffff;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 100px;
+    font-weight: 800;
+    margin-bottom: 15px;
+  }
+
+  p {
+    max-width: 900px;
+    font-size: 23px;
+    font-weight: 500;
+    font-family: "Calibri";
+    color: #ffffff;
+  }
+
+  .categories_list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 0;
+    justify-content: center;
+    gap: 40px;
+
+    a {
+      text-decoration: none;
+    }
+
+    .category {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 230px;
+      height: 210px;
+      cursor: pointer;
+      border-radius: 30px;
+
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+      }
+
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+        background-color: rgba(22, 22, 22, 0.342);
+
+        
+      }
+
+      &_text {
+        position: relative;
+        color: white;
+
+        &_icon {
+          font-size: 45px;
+        }
+
+        p {
+          font-weight: 600;
+        }
+      }
+
+      &:hover {
+        
+        transition: all 0.2s ease-in-out;
+        transform: scale(1.05);
+        box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25),
+          -10px -10px 20px 0px rgba(0, 0, 0, 0);
+         .overlay{
+          background-color: rgba(22, 22, 22, 0.491);
+         }
+
+      }
+
+    }
+  }
+}

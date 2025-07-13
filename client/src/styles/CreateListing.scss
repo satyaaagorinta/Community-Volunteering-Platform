@@ -1,0 +1,528 @@
+@import "../styles/variables.scss";
+@import "../styles/breakpoints.scss";
+
+.create-listing {
+  background-color: #e9e9e9;
+  padding: 40px 60px 120px;
+
+  @include mm {
+    padding: 40px 20px;
+  }
+
+  h1 {
+    color: #000000;
+    font-size: 60px;
+    font-family: "Calibri";
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+    margin-top: 40px;
+  }
+  .caption_bg{
+    background-color: #fffdfd;
+    border-radius: 20px;
+
+  }
+  .masked-text {
+    font-size: 4.5rem;
+    font-weight: bold;
+    color: transparent;
+    background-image: url('https://images.unsplash.com/photo-1732535725600-f805d8b33c9c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
+    background-size: 200%; /* Enlarged for smooth animation */
+    background-position: 0 50%;
+    background-clip: text;
+    
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-background 12s infinite alternate linear;
+    
+}
+
+@keyframes animate-background {
+    0% {
+        background-position: 0 25%;
+    }
+    25%{
+      background-position:  25% 50% ;
+    }
+    
+    75% {
+      background-position:   50% 75%;
+    }
+    100% {
+        background-position:  75% 100% ;
+    }
+}
+
+  &_step1 {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+    margin-top: 40px;
+    font-family: "Calibri";
+
+    @include sm {
+      padding: 30px 20px;
+    }
+
+    h2 {
+      color: #000000;
+      font-family: "Calibri";
+    }
+
+    hr {
+      margin: 15px 0 25px;
+      
+    }
+
+    h3 {
+      margin: 40px 0 20px;
+      color: #ffffff;
+      font-family: "Calibri";
+    }
+
+    .category-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 0 20px;
+      font-family: "Calibri";
+
+      @include lg {
+        padding: 0 20px;
+      }
+
+      @include md {
+        padding: 0;
+      }
+
+      .category {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 110px;
+        font-family: "Calibri";
+        height: 100px;
+        // border: 1px solid $grey;
+        border-radius: 10px;
+        box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.25), -3px -3px 6px 0px
+               rgba(0, 0, 0, 0);
+
+        cursor: pointer;
+        transition: 0.2s ease;
+
+        &_icon {
+          font-size: 30px;
+          color: black;
+        }
+
+        p {
+          font-weight: 550;
+          text-align: center;
+          color: black;
+          font-family: "Calibri";
+        }
+
+        &:hover {
+          // border: 2px solid $pinkred;
+          // background-color: $lightgrey;
+          transition: all .2s ease-in-out;
+      transform: scale(1.1);
+      box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25), -10px -10px 20px 0px
+               rgba(0, 0, 0, 0);
+      
+        }
+      }
+
+      .selected {
+        // border: 2px solid $pinkred;
+        // background-color: $lightgrey;
+        // background: linear-gradient(
+        //    90deg,
+        //    rgba(108, 200, 181, 1) 64%,
+        //    rgba(221, 155, 75, 1) 100%
+        //        );
+        background: linear-gradient(
+          90deg,
+          rgba(151, 71, 255, 0.747) 52%,
+           rgba(221, 155, 75, 0.703) 100%
+           );
+               box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25), -10px -10px 20px 0px
+               rgba(0, 0, 0, 0);
+               transform: scale(1.1);
+
+               
+                 
+
+
+
+      }
+    }
+
+    
+    .full {
+      max-width: 700px;
+    }
+
+    .half {
+      max-width: 700px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+
+      @include ml {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+
+    .location {
+      p {
+        font-weight: 700;
+        margin: 20px 0 10px;
+        font-family: "Calibri";
+      }
+      input {
+        border: 1px white;
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        width: 100%;
+        font-family: "Calibri";
+         box-shadow: inset 3px 3px 5px 0 rgba(0, 0, 0, 0.2), inset -3px -3px 5px 0 rgba(255,255,255,0.5);
+        
+  
+
+
+        border-radius: 30px;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .basics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+
+      .basic {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding: 15px;
+        border: 1px solid $grey;
+        border-radius: 10px;
+
+        p {
+          font-weight: 600;
+          font-family: "Calibri";
+        }
+
+        &_count {
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          font-size: 20px;
+          font-family: "Calibri";
+        }
+      }
+    }
+  }
+
+  &_step2 {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+    margin-top: 40px;
+
+    @include sm {
+      padding: 30px 20px;
+    }
+
+    h2 {
+      color: #000000;
+      font-family: "Calibri";
+    }
+
+    hr {
+      margin: 15px 0 25px;
+    }
+
+    h3 {
+      margin: 40px 0 20px;
+      color: black;
+      font-family: "Calibri";
+    }
+
+    .amenities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+
+      .facility {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 170px;
+        height: 70px;
+        // border: 1px solid $grey;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.25), -3px -3px 6px 0px
+               rgba(0, 0, 0, 0);
+               font-family: "Calibri";
+        
+        
+
+        &_icon {
+          font-size: 20px;
+        }
+
+        p {
+          font-weight: 600;
+          font-family: "Calibri";
+        }
+
+        &:hover {
+          // border: 2px solid $pinkred;
+          // background-color: $lightgrey;
+          transition: all .2s ease-in-out;
+      transform: scale(1.1);
+        }
+      }
+
+      .selected {
+        
+        background-color: rgb(142, 220, 205) ; 
+        p {
+          font-weight: 600;
+          // color: #ffffff;
+        }
+        
+           
+               box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25), -10px -10px 20px 0px
+               rgba(0, 0, 0, 0);
+               transform: scale(1.1);
+
+      }
+    }
+
+    .photos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+
+      .photo {
+        position: relative;
+        width: 250px;
+        height: 150px;
+        cursor: move;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+
+        button {
+          position: absolute;
+          right: 0;
+          top: 0;
+          padding: 3px;
+          border: none;
+          background-color: rgba(255, 255, 255, 0.8);
+          font-size: 20px;
+          cursor: pointer;
+
+          &:hover {
+            // color: $pinkred;
+            transition: all .2s ease-in-out;
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      label {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+         border: 1px white;
+        font-family: "Calibri";
+
+        .icon {
+          font-size: 60px;
+        }
+
+        p {
+          font-weight: 600;
+          text-align: center;
+          font-family: "Calibri";
+        }
+      }
+
+      .together {
+        width: 250px;
+        height: 150px;
+        font-family: "Calibri";
+      }
+
+      .alone {
+        padding: 40px 100px;
+        border-radius: 10px;
+        font-family: "Calibri";
+
+        @include mm {
+          padding: 40px 80px;
+        }
+
+        @include sm {
+          padding: 40px 30px;
+        }
+      }
+    }
+
+    .title {
+      input {
+        // border: 1px solid $grey;
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        width: 100%;
+        font-family: "Calibri";
+        border: 1px white;
+        box-shadow: inset 3px 3px 5px 0 rgba(0, 0, 0, 0.2), inset -3px -3px 5px 0 rgba(255,255,255,0.5);
+        // &:focus {
+        //   outline: none;
+        // }
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .description {
+      p {
+        font-weight: 700;
+        margin: 20px 0 10px;
+        font-family: "Calibri";
+      }
+
+      input,
+      textarea {
+        // border: 1px solid $grey;
+        padding: 15px 30px;
+        border-radius: 10px;
+        // outline : none;
+        font-size: 16px;
+        font-weight: 600;
+        width: 600px;
+        font-family: "Calibri";
+        // box-shadow: inset 3px 3px 5px 0 rgba(0, 0, 0, 0.2), inset -3px -3px 5px 0 rgba(255,255,255,0.5);
+        border: 1px white;
+        box-shadow: inset 3px 3px 5px 0 rgba(0, 0, 0, 0.2), inset -3px -3px 5px 0 rgba(255,255,255,0.5);
+        &:focus {
+          outline: none;
+        }
+        @include ml {
+          width: 450px;
+        }
+
+        @include md {
+          width: 350px;
+        }
+
+        @include sm {
+          width: 280px;
+        }
+
+        // &:focus {
+        //   outline: none;
+        // }
+      }
+
+      span {
+        font-size: 25px;
+        font-weight: 700;
+        margin-right: 20px;
+      }
+
+      // .price {
+      //   width: 200px;
+      // }
+    }
+  }
+
+  .submit_btn {
+    border: none;
+//     // margin-top: 40px;
+
+//     // @include buttonStyle;
+//      box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.25), -3px -3px 6px 0px rgba(0, 0, 0, 0);
+//      background: linear-gradient(
+//                 90deg,
+//                 rgba(151, 71, 255, 0.747) 52%,
+//                  rgba(221, 155, 75, 0.703) 100%
+
+
+//                  );
+
+//                  position: relative;
+//  padding: 16px 32px;
+//  font-family: Roboto, sans-serif;
+//  font-weight: 500;
+//  font-size: 16px;
+//  line-height: 1;
+//  color: white;
+//  background: none;
+//  border: none;
+//  outline: none;
+//  overflow: hidden;
+//  cursor: pointer;
+//  filter: drop-shadow(0 2px 8px rgba(39, 94, 254, 0.32));
+//  transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+
+
+//     &:hover {
+//       // box-shadow: 0 0 10px 3px rgb(0, 0, 0);
+margin-top: 15px;
+margin-top: 15px;
+
+@include buttonStyle;
+// background-color: black;
+background: linear-gradient(
+ 90deg,
+ rgba(151, 71, 255 ) 52%,
+  rgba(221, 155, 75, ) 100%
+  );
+
+// width: 50%;
+
+box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.25), -3px -3px 6px 0px
+      rgba(0, 0, 0, 0);
+
+// @include buttonStyle;
+// width: 50%;
+max-width: 30%;
+&:hover {
+  // box-shadow: 0 0 10px 3px rgba(255, 255, 255);
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25), -10px -10px 20px 0px
+  rgba(0, 0, 0, 0);
+
+
+
+      transition: all .2s ease-in-out;
+      transform: scale(1.02);
+    }
+  }
+}
